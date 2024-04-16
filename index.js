@@ -1,12 +1,13 @@
-playerStartTime = {};
-playerTimeSpent = {};
-active = false
+let playerStartTime = {};
+let playerTimeSpent = {};
+let active = false
 
 
-register('chat', (rank,player) => {
+register('chat', (player) => {
+    player = player.split(" ")[-1]
     active = true;
     playerStartTime[player] = Date.now();
-}).setCriteria("⚔${rank}${player} warped to your instance")
+}).setCriteria("⚔${player} warped to your instance")
 
 register('chat', (player, location) => {
     let now = Date.now()
