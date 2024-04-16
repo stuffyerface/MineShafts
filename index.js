@@ -18,19 +18,21 @@ register('chat', (player, location) => {
 }).setCriteria(" » ${player} is traveling to ${location} FOLLOW")
 
 register('chat', () => {
-    ChatLib.chat("&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n&eTracked Shaft Times:")
-    let now = Date.now()
-    for (let key in playerStartTime){
-        if (!playerTimeSpent[key]){
-            playerTimeSpent[key] = (now - playerStartTime[key])/1000 + "&es &cDNF";
+    if(active){
+        ChatLib.chat("&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n&eTracked Shaft Times:")
+        let now = Date.now()
+        for (let key in playerStartTime){
+            if (!playerTimeSpent[key]){
+                playerTimeSpent[key] = (now - playerStartTime[key])/1000 + "&es &cDNF";
+            }
         }
+        for (let key in playerTimeSpent){
+            let timeSpent = playerTimeSpent[key]
+            ChatLib.chat(" &3" + key + ": &f" + timeSpent)
+        }
+        ChatLib.chat("&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
+        reset()
     }
-    for (let key in playerTimeSpent){
-        let timeSpent = playerTimeSpent[key]
-        ChatLib.chat(" &3" + key + ": &f" + timeSpent)
-    }
-    ChatLib.chat("&b▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")
-    reset()
 }).setCriteria("The mineshaft entrance has caved in... it doesn't look like anyone else will be able to get in here.")
 
 register('worldLoad', () =>{
