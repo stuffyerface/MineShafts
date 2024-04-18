@@ -1,7 +1,7 @@
 {
   "name": "MineShafts",
   "creator": "Stuffy",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Times how long your party spends in the shaft",
   "entry": "index.js"
 }
